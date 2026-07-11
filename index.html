@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Autoatendimento para orçamento estimado de forro PVC Polyperfil." />
+  <title>Orçamento de Forro PVC | Polyperfil</title>
+  <style>
+    :root {
+      --brand: #1A4A73;
+      --brand-2: #3B82C9;
+      --brand-soft: #E6EFF7;
+      --ink: #17262b;
+      --muted: #667b87;
+      --line: #dce2ea;
+      --paper: #ffffff;
+      --bg: #f4f6f8;
+      --danger: #b42318;
+      --shadow: 0 18px 50px rgba(23, 38, 43, 0.10);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(59,130,201,.10), transparent 28rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+
+    .topbar {
+      background: #0F2D45;
+      color: white;
+      text-align: center;
+      padding: 9px 16px;
+      font-size: .86rem;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,.88);
+      border-bottom: 1px solid rgba(220,229,234,.9);
+    }
+
+    .header-inner {
+      max-width: 1240px;
+      margin: auto;
+      min-height: 72px;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      font-size: 1.25rem;
+    }
+
+    .logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .logo-mark {
+      width: 38px;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 10px 22px rgba(26,74,115,.28);
+    }
+
+    .header-step {
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .page {
+      max-width: 1240px;
+      margin: auto;
+      padding: 38px 22px 70px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+
+    .hero-main,
+    .hero-side {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      position: relative;
+      padding: clamp(28px, 5vw, 58px);
+      color: white;
+      background:
+        linear-gradient(110deg, rgba(11,38,60,.98), rgba(26,74,115,.88)),
+        repeating-linear-gradient(90deg, #ffffff 0 5px, #dbe4ea 5px 10px);
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      right: -80px;
+      top: -120px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 50%;
+      box-shadow: 0 0 0 42px rgba(255,255,255,.05), 0 0 0 90px rgba(255,255,255,.035);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 18px 0 12px;
+      font-size: clamp(2rem, 4.6vw, 4.35rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    .hero-main p {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0;
+      color: rgba(255,255,255,.84);
+      font-size: clamp(1rem, 2vw, 1.13rem);
+      line-height: 1.6;
+    }
+
+    .hero-side {
+      padding: 28px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .hero-side h2 { margin: 0; font-size: 1.25rem; }
+    .hero-side ol {
+      margin: 0;
+      padding-left: 21px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .hero-side strong { color: var(--ink); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .stack { display: grid; gap: 22px; }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 35px rgba(23,38,43,.05);
+      overflow: hidden;
+    }
+
+    .card-head {
+      padding: 24px 24px 16px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .step-title {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+    }
+
+    .step-number {
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--brand);
+      font-weight: 900;
+    }
+
+    .card h2, .card h3 { margin: 0; }
+    .card-head p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: .93rem;
+    }
+
+    .products {
+      padding: 4px 24px 26px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .product {
+      position: relative;
+      display: grid;
+      grid-template-columns: 108px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      min-height: 112px;
+      padding: 10px;
+      border-radius: 17px;
+      border: 2px solid var(--line);
+      background: white;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      cursor: pointer;
+    }
+
+    .product:hover { transform: translateY(-2px); border-color: #9fc0c8; }
+    .product.selected {
+      border-color: var(--brand-2);
+      box-shadow: 0 10px 24px rgba(59,130,201,.15);
+      background: var(--brand-soft);
+    }
+
+    .product-check {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--brand);
+      opacity: 0;
+      transform: scale(.8);
+      transition: .18s ease;
+      font-size: .8rem;
+      font-weight: 900;
+    }
+
+    .product.selected .product-check { opacity: 1; transform: scale(1); }
+
+    .sample {
+      height: 88px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.07);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.25);
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .white-matte { background: repeating-linear-gradient(90deg, #f8f8f5 0 19px, #ddddda 20px 21px); }
+    .white-gloss { background: linear-gradient(120deg, rgba(255,255,255,.9), rgba(255,255,255,.25) 35%, rgba(255,255,255,.95) 36% 45%, transparent 46%), repeating-linear-gradient(90deg, #f7faf9 0 19px, #d5ddda 20px 21px); }
+    .freijo-g { background: repeating-linear-gradient(90deg, transparent 0 19px, rgba(73,43,15,.24) 20px 21px), repeating-linear-gradient(7deg, #cf9d5e 0 5px, #bd8245 6px 8px, #d9aa6c 9px 15px); }
+    .mogno-g { background: repeating-linear-gradient(90deg, transparent 0 19px, rgba(52,15,7,.25) 20px 21px), repeating-linear-gradient(6deg, #9b4f2f 0 5px, #7e3522 6px 8px, #b2653d 9px 15px); }
+    .freijo-b { background: linear-gradient(110deg, rgba(255,255,255,.27), transparent 35%), repeating-linear-gradient(90deg, transparent 0 19px, rgba(66,35,12,.20) 20px 21px), repeating-linear-gradient(5deg, #c89555 0 4px, #b3793d 5px 7px, #d2a366 8px 14px); }
+    .cedro-b { background: linear-gradient(110deg, rgba(255,255,255,.26), transparent 35%), repeating-linear-gradient(90deg, transparent 0 19px, rgba(54,19,8,.22) 20px 21px), repeating-linear-gradient(5deg, #af6845 0 5px, #945038 6px 8px, #c27b55 9px 15px); }
+    .mogno-b { background: linear-gradient(110deg, rgba(255,255,255,.24), transparent 35%), repeating-linear-gradient(90deg, transparent 0 19px, rgba(50,14,7,.22) 20px 21px), repeating-linear-gradient(5deg, #91452e 0 5px, #6f2d22 6px 8px, #aa5a3e 9px 15px); }
+    .quaruba-b { background: linear-gradient(110deg, rgba(255,255,255,.25), transparent 35%), repeating-linear-gradient(90deg, transparent 0 19px, rgba(87,49,9,.18) 20px 21px), repeating-linear-gradient(5deg, #d8b773 0 5px, #c39a53 6px 8px, #e1c385 9px 15px); }
+    .cerejeira-b { background: linear-gradient(110deg, rgba(255,255,255,.24), transparent 35%), repeating-linear-gradient(90deg, transparent 0 19px, rgba(50,12,8,.22) 20px 21px), repeating-linear-gradient(5deg, #a64a37 0 5px, #873229 6px 8px, #bd6049 9px 15px); }
+    .colonial-f { background: repeating-linear-gradient(90deg, transparent 0 19px, rgba(63,32,9,.28) 20px 21px), repeating-linear-gradient(0deg, rgba(75,42,17,.20) 0 1px, transparent 1px 7px), linear-gradient(100deg, #bf8c51, #ddb474 45%, #a96f38); }
+    .colonial-i { background: repeating-linear-gradient(90deg, transparent 0 19px, rgba(42,18,6,.28) 20px 21px), repeating-linear-gradient(0deg, rgba(53,25,10,.22) 0 1px, transparent 1px 7px), linear-gradient(100deg, #7c4829, #a36a3c 45%, #62331f); }
+    .nogueira { background: repeating-linear-gradient(90deg, transparent 0 19px, rgba(32,15,8,.28) 20px 21px), repeating-linear-gradient(7deg, #76513c 0 4px, #533628 5px 7px, #8d6650 8px 14px); }
+
+    .product-name { font-weight: 850; line-height: 1.25; padding-right: 20px; }
+    .product-price { color: var(--brand); font-weight: 900; margin-top: 7px; }
+    .product-price small { color: var(--muted); font-weight: 650; }
+
+    .payment-toggle {
+      margin: 0;
+      padding: 5px;
+      border: 1px solid var(--line);
+      background: #f6f8fa;
+      border-radius: 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+      min-width: 220px;
+    }
+
+    .payment-toggle button {
+      border: 0;
+      padding: 11px;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .payment-toggle button.active { color: var(--ink); background: white; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+
+    .rooms { padding: 2px 24px 24px; display: grid; gap: 14px; }
+
+    .room {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: #fbfcfe;
+    }
+
+    .room-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .room.incomplete { border-color: #f0c674; background: #fffaf0; }
+    .room.incomplete .floor-pill { border-color: #d8a23a; }
+    .room.incomplete .floor-pill .sample-placeholder {
+      border-color: #d8a23a; color: #b08030; background: #fff3d6;
+    }
+
+    .floor-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 12px 7px 7px;
+      border: 1.5px solid var(--line);
+      border-radius: 999px;
+      background: white;
+      color: var(--ink);
+      font-weight: 850;
+      font-size: .82rem;
+      max-width: 100%;
+      transition: border-color .18s ease, transform .18s ease;
+    }
+    .floor-pill:hover { border-color: #9fc0c8; transform: translateY(-1px); }
+    .floor-pill .sample { width: 34px; height: 34px; border-radius: 50%; }
+    .floor-pill .sample-placeholder {
+      width: 34px; height: 34px; border-radius: 50%;
+      display: grid; place-items: center; color: var(--muted);
+      border: 1.5px dashed #b8c2cd; background: #f4f6f8; font-size: .9rem;
+    }
+    .floor-pill .floor-pill-meta { display: grid; gap: 1px; min-width: 0; line-height: 1.15; }
+    .floor-pill .floor-pill-meta small { color: var(--muted); font-weight: 700; font-size: .68rem; }
+    .floor-pill .floor-pill-meta strong {
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;
+    }
+    .floor-pill.no-floor { color: var(--muted); font-weight: 800; }
+
+    .dialog-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(11, 38, 60, .55);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .dialog-backdrop.open { display: flex; }
+
+    .dialog {
+      width: min(720px, 100%);
+      max-height: min(86vh, 820px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,.35);
+      animation: dialogIn .22s ease;
+    }
+    @keyframes dialogIn {
+      from { transform: translateY(20px) scale(.97); opacity: 0; }
+      to   { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .dialog-head {
+      padding: 20px 22px 14px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+    .dialog-head h3 { margin: 0; font-size: 1.15rem; }
+    .dialog-head p { margin: 4px 0 0; color: var(--muted); font-size: .86rem; }
+    .dialog-close {
+      border: 0; background: #f0f3f6; border-radius: 10px;
+      width: 38px; height: 38px; font-size: 1.2rem; color: var(--ink);
+    }
+    .dialog-body { padding: 14px 18px; overflow: auto; }
+    .dialog-foot {
+      padding: 14px 22px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      border-top: 1px solid var(--line);
+      background: #fafbfc;
+    }
+    .dialog-foot button { border: 0; padding: 12px 18px; border-radius: 12px; font-weight: 900; }
+    .dialog-foot .ghost { background: transparent; color: var(--muted); }
+    .dialog-foot .apply { background: var(--brand-2); color: #0b2538; }
+
+    .dialog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 720px) {
+      .dialog-grid { grid-template-columns: 1fr; }
+      .dialog { max-height: 92vh; border-radius: 18px 18px 0 0; align-self: end; }
+      .dialog-backdrop { padding: 0; align-items: flex-end; }
+      .dialog-foot .ghost { display: none; }
+    }
+
+    .room-name {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 900;
+    }
+
+    .room-index {
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: #e6eff7;
+      color: var(--brand);
+      font-size: .82rem;
+    }
+
+    .remove-room {
+      border: 0;
+      background: transparent;
+      color: var(--danger);
+      font-weight: 800;
+      padding: 7px 8px;
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.1fr;
+      gap: 13px;
+    }
+
+    label { display: grid; gap: 7px; font-size: .82rem; font-weight: 800; color: #3f4a55; }
+    input, select {
+      width: 100%;
+      border: 1px solid #cfd6df;
+      border-radius: 12px;
+      background: white;
+      color: var(--ink);
+      padding: 13px 12px;
+      outline: none;
+      transition: border-color .18s ease, box-shadow .18s ease;
+    }
+    input:focus, select:focus { border-color: var(--brand-2); box-shadow: 0 0 0 4px rgba(59,130,201,.12); }
+
+    .room-result {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .mini-stat {
+      padding: 10px;
+      border-radius: 12px;
+      background: white;
+      border: 1px solid var(--line);
+    }
+    .mini-stat span { display: block; color: var(--muted); font-size: .72rem; font-weight: 700; }
+    .mini-stat strong { display: block; margin-top: 4px; font-size: .92rem; }
+
+    .add-room {
+      margin-top: 2px;
+      width: 100%;
+      border: 1.5px dashed #95b2c4;
+      color: var(--brand);
+      background: var(--brand-soft);
+      padding: 14px;
+      border-radius: 14px;
+      font-weight: 900;
+    }
+
+    .summary {
+      position: sticky;
+      top: 96px;
+      border-radius: var(--radius);
+      background: #0F2A40;
+      color: white;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .summary-head { padding: 24px 24px 17px; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .summary-head h2 { margin: 0; }
+    .summary-head p { margin: 7px 0 0; color: rgba(255,255,255,.66); font-size: .88rem; }
+
+    .selected-product {
+      margin: 18px 20px 0;
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 12px;
+      align-items: center;
+      border-radius: 15px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.11);
+    }
+
+    .selected-product .sample { height: 56px; }
+    .selected-product small { color: rgba(255,255,255,.63); }
+
+    .summary-lines { padding: 18px 24px 4px; display: grid; gap: 12px; }
+    .summary-line { display: flex; justify-content: space-between; align-items: center; gap: 15px; color: rgba(255,255,255,.72); font-size: .9rem; }
+    .summary-line strong { color: white; text-align: right; }
+
+    .total-box {
+      margin: 18px 20px 20px;
+      padding: 19px;
+      border-radius: 17px;
+      color: #0F2A40;
+      background: linear-gradient(135deg, #dce9f7, #a7c8e3);
+    }
+    .total-box span { font-size: .82rem; font-weight: 800; }
+    .total-box strong { display: block; margin-top: 4px; font-size: 2rem; letter-spacing: -.04em; }
+    .total-box small { display: block; margin-top: 5px; color: #38637f; }
+
+    .summary-actions { padding: 0 20px 20px; display: grid; gap: 10px; }
+    .primary, .secondary {
+      border-radius: 13px;
+      padding: 14px 16px;
+      font-weight: 900;
+    }
+    .primary { border: 0; background: var(--brand-2); color: #0b2538; }
+    .secondary { border: 1px solid rgba(255,255,255,.25); background: transparent; color: white; }
+
+    .notice {
+      margin: 0 20px 22px;
+      color: rgba(255,255,255,.55);
+      font-size: .75rem;
+      line-height: 1.5;
+    }
+
+    .empty-state { color: rgba(255,255,255,.58); }
+    .warning { color: #ffe08a !important; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      transform: translate(-50%, 20px);
+      z-index: 100;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: #0e2538;
+      color: white;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      font-size: .9rem;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    footer {
+      padding: 26px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    @media (max-width: 1020px) {
+      .hero, .layout { grid-template-columns: 1fr; }
+      .summary { position: static; }
+    }
+
+    @media (max-width: 720px) {
+      .topbar { font-size: .77rem; }
+      .header-step { display: none; }
+      .page { padding-inline: 14px; padding-top: 20px; }
+      .hero-main, .hero-side { border-radius: 22px; }
+      .hero-main { padding: 32px 24px; }
+      .products { grid-template-columns: 1fr; padding-inline: 16px; }
+      .card-head { padding-inline: 18px; flex-wrap: wrap; }
+      .card-head .payment-toggle { width: 100%; min-width: 0; }
+      .payment-toggle { margin-inline: 16px; }
+      .rooms { padding-inline: 16px; }
+      .fields { grid-template-columns: 1fr 1fr; }
+      .fields label:last-child { grid-column: 1 / -1; }
+      .room-result { grid-template-columns: 1fr 1fr; }
+      .room-header { gap: 10px; }
+    }
+
+    @media print {
+      .topbar, .site-header, .hero, .stack, .summary-actions { display: none !important; }
+      .page { max-width: none; padding: 0; }
+      .layout { display: block; }
+      .summary { box-shadow: none; border-radius: 0; min-height: 100vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">Orçamento estimado de material • Forro PVC com lâmina padrão de 20 cm</div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo"><img src="public/LOGO_POLY_PNG.png" alt="Polyperfil"></div>
+      <div class="header-step">Escolha o modelo → Informe as medidas → Veja o orçamento</div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-main">
+        <span class="eyebrow">Autoatendimento</span>
+        <h1>Calcule seu forro em poucos passos.</h1>
+        <p>Selecione o modelo, informe as medidas de cada compartimento e escolha o sentido das lâminas. O sistema calcula a quantidade, a metragem vendida e o valor estimado.</p>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div class="stack">
+        <article class="card">
+          <div class="card-head">
+            <div class="step-title">
+              <span class="step-number">1</span>
+              <div>
+                <h2>Informe os compartimentos</h2>
+                <p>Para cada ambiente, escolha o forro e o Rodaforro (opcional), informe comprimento, largura e o sentido da lâmina. Só calculamos quando o forro estiver definido e as medidas preenchidas.</p>
+              </div>
+            </div>
+            <div class="payment-toggle" aria-label="Forma de pagamento">
+              <button type="button" class="active" data-payment="cash">Preço à vista</button>
+              <button type="button" data-payment="card">Preço no cartão</button>
+            </div>
+          </div>
+
+          <div class="rooms" id="rooms"></div>
+        </article>
+      </div>
+
+      <aside class="summary" aria-live="polite">
+        <div class="summary-head">
+          <h2>Resumo do orçamento</h2>
+          <p>Valores atualizados conforme suas escolhas.</p>
+        </div>
+
+        <div class="selected-product" id="selectedProduct"></div>
+
+        <div class="summary-lines">
+          <div class="summary-line"><span>Compartimentos</span><strong id="sumRooms">0</strong></div>
+          <div class="summary-line"><span>Área real</span><strong id="sumRealArea">0,00 m²</strong></div>
+          <div class="summary-line"><span>Área vendida</span><strong id="sumSoldArea">0,00 m²</strong></div>
+          <div class="summary-line"><span>Total de lâminas</span><strong id="sumBlades">0</strong></div>
+          <div class="summary-line"><span>Perda estimada</span><strong id="sumWaste">0,00 m²</strong></div>
+          <div class="summary-line"><span>Barras de Rodaforro</span><strong id="sumMoldingBars">0</strong></div>
+        </div>
+
+        <div class="total-box">
+          <span>VALOR ESTIMADO DO MATERIAL</span>
+          <strong id="sumTotal">R$ 0,00</strong>
+          <small id="sumPayment">Preço à vista</small>
+        </div>
+
+        <div class="summary-actions">
+          <button type="button" class="primary" id="copyQuote">Copiar resumo para WhatsApp</button>
+          <button type="button" class="secondary" onclick="window.print()">Imprimir orçamento</button>
+        </div>
+
+        <p class="notice">Este cálculo é uma estimativa de forro PVC. Perfis, estrutura, frete, instalação e condições especiais devem ser confirmados com um atendente.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer>Polyperfil • Simulador de orçamento de forro PVC</footer>
+  <div class="toast" id="toast">Resumo copiado.</div>
+
+  <div class="dialog-backdrop" id="moldingDialog" role="dialog" aria-modal="true" aria-labelledby="moldingDialogTitle">
+    <div class="dialog">
+      <div class="dialog-head">
+        <div>
+          <h3 id="moldingDialogTitle">Escolher Rodaforro</h3>
+          <p id="moldingDialogSubtitle">O Rodaforro é opcional. Cada barra tem 6 m lineares.</p>
+        </div>
+        <button type="button" class="dialog-close" id="moldingDialogClose" aria-label="Fechar">×</button>
+      </div>
+      <div class="dialog-body">
+        <div class="dialog-grid" id="moldingDialogGrid"></div>
+      </div>
+      <div class="dialog-foot">
+        <button type="button" class="ghost" id="moldingDialogClear">Sem Rodaforro</button>
+        <button type="button" class="apply" id="moldingDialogApply">Aplicar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-backdrop" id="floorDialog" role="dialog" aria-modal="true" aria-labelledby="floorDialogTitle">
+    <div class="dialog">
+      <div class="dialog-head">
+        <div>
+          <h3 id="floorDialogTitle">Escolher forro para este compartimento</h3>
+          <p id="floorDialogSubtitle">Toque no acabamento desejado para este ambiente.</p>
+        </div>
+        <button type="button" class="dialog-close" id="floorDialogClose" aria-label="Fechar">×</button>
+      </div>
+      <div class="dialog-body">
+        <div class="dialog-grid" id="floorDialogGrid"></div>
+      </div>
+      <div class="dialog-foot">
+        <button type="button" class="ghost" id="floorDialogClear">Limpar seleção</button>
+        <button type="button" class="apply" id="floorDialogApply">Aplicar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STOCK_LENGTHS = [3, 3.5, 4, 4.5, 5, 5.5, 6];
+    const BLADE_WIDTH = 0.20;
+    const MOLDING_LENGTH = 6;
+
+    const products = [
+      { id: 'branco-fosco', name: 'Branco liso fosco', cash: 24.70, card: 26.00, sample: 'white-matte' },
+      { id: 'branco-brilho', name: 'Branco liso brilho', cash: 31.40, card: 33.05, sample: 'white-gloss' },
+      { id: 'freijo-germinado', name: 'Freijó germinado', cash: 31.90, card: 33.57, sample: 'freijo-g' },
+      { id: 'mogno-germinado', name: 'Mogno germinado', cash: 31.90, card: 33.57, sample: 'mogno-g' },
+      { id: 'freijo-brilho', name: 'Freijó liso brilho', cash: 41.00, card: 43.15, sample: 'freijo-b' },
+      { id: 'cedro-brilho', name: 'Cedro liso brilho', cash: 41.00, card: 43.15, sample: 'cedro-b' },
+      { id: 'mogno-brilho', name: 'Mogno liso brilho', cash: 43.60, card: 45.89, sample: 'mogno-b' },
+      { id: 'quaruba-brilho', name: 'Quaruba liso brilho', cash: 43.60, card: 45.89, sample: 'quaruba-b' },
+      { id: 'cerejeira-brilho', name: 'Cerejeira liso brilho', cash: 43.60, card: 45.89, sample: 'cerejeira-b' },
+      { id: 'freijo-colonial', name: 'Freijó colonial', cash: 46.70, card: 49.15, sample: 'colonial-f' },
+      { id: 'ipe-colonial', name: 'Ipê colonial', cash: 46.70, card: 49.15, sample: 'colonial-i' },
+      { id: 'nogueira', name: 'Nogueira', cash: 46.70, card: 49.15, sample: 'nogueira' }
+    ];
+
+    // Rodaforro (opcional). Cada barra tem MOLDING_LENGTH metros lineares.
+    // Quantidade por ambiente = perímetro (m) / MOLDING_LENGTH, arredondado para cima.
+    // Valores mockados até a lista oficial ficar disponível.
+    const moldings = [
+      { id: 'rodaforro-branco',        name: 'Rodaforro branco liso',         cash: 18.50, card: 19.50, sample: 'white-matte' },
+      { id: 'rodaforro-branco-brilho', name: 'Rodaforro branco brilho',       cash: 22.00, card: 23.15, sample: 'white-gloss' },
+      { id: 'rodaforro-freijo-g',      name: 'Rodaforro Freijó germinado',     cash: 24.90, card: 26.20, sample: 'freijo-g' },
+      { id: 'rodaforro-mogno-g',       name: 'Rodaforro Mogno germinado',      cash: 24.90, card: 26.20, sample: 'mogno-g' },
+      { id: 'rodaforro-freijo-b',      name: 'Rodaforro Freijó brilho',        cash: 28.40, card: 29.90, sample: 'freijo-b' },
+      { id: 'rodaforro-cedro-b',       name: 'Rodaforro Cedro brilho',         cash: 28.40, card: 29.90, sample: 'cedro-b' },
+      { id: 'rodaforro-colonial-f',    name: 'Rodaforro Freijó colonial',      cash: 31.50, card: 33.15, sample: 'colonial-f' },
+      { id: 'rodaforro-colonial-i',    name: 'Rodaforro Ipê colonial',         cash: 31.50, card: 33.15, sample: 'colonial-i' }
+    ];
+
+    let payment = 'cash';
+    let roomCounter = 0;
+
+    const money = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+    const decimal = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    function getProductById(id) {
+      return products.find(p => p.id === id) || null;
+    }
+
+    function getMoldingById(id) {
+      return moldings.find(m => m.id === id) || null;
+    }
+
+    function getRoomProduct(room) {
+      if (!room) return null;
+      const id = room.dataset.productId;
+      return id ? getProductById(id) : null;
+    }
+
+    function getRoomMolding(room) {
+      if (!room) return null;
+      const id = room.dataset.moldingId;
+      return id ? getMoldingById(id) : null;
+    }
+
+    function updateFloorPill(room) {
+      const pill = room.querySelector('[data-floor-pill]');
+      const thumb = room.querySelector('[data-floor-thumb]');
+      const nameEl = room.querySelector('[data-floor-name]');
+      const labelEl = room.querySelector('[data-floor-label]');
+      const product = getRoomProduct(room);
+      if (product) {
+        thumb.className = `sample ${product.sample}`;
+        thumb.textContent = '';
+        nameEl.textContent = product.name;
+        labelEl.textContent = `${money.format(product[payment])}/m²`;
+        pill.classList.remove('no-floor');
+      } else {
+        thumb.className = 'sample-placeholder';
+        thumb.textContent = '+';
+        nameEl.textContent = 'Escolher forro';
+        labelEl.textContent = 'Obrigatório';
+        pill.classList.add('no-floor');
+      }
+    }
+
+    function updateMoldingPill(room) {
+      const pill = room.querySelector('[data-molding-pill]');
+      const thumb = room.querySelector('[data-molding-thumb]');
+      const nameEl = room.querySelector('[data-molding-name]');
+      const labelEl = room.querySelector('[data-molding-label]');
+      const molding = getRoomMolding(room);
+      if (molding) {
+        thumb.className = `sample ${molding.sample}`;
+        thumb.textContent = '';
+        nameEl.textContent = molding.name;
+        labelEl.textContent = `${money.format(molding[payment])}/barra`;
+        pill.classList.remove('no-molding');
+      } else {
+        thumb.className = 'sample-placeholder';
+        thumb.textContent = '–';
+        nameEl.textContent = 'Sem Rodaforro';
+        labelEl.textContent = 'Opcional';
+        pill.classList.add('no-molding');
+      }
+    }
+
+    function renderProducts() {
+      // No-op: global product selector was removed in step 1.
+      // Kept as a no-op so any external callers remain safe.
+    }
+
+    function addRoom(values = {}) {
+      roomCounter++;
+      const room = document.createElement('div');
+      room.className = 'room';
+      room.dataset.roomId = roomCounter;
+      room.innerHTML = `
+        <div class="room-header">
+          <div class="room-name"><span class="room-index">${roomCounter}</span><span>Compartimento ${roomCounter}</span></div>
+          <div class="room-actions" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <button type="button" class="floor-pill no-floor" data-floor-pill aria-label="Escolher forro deste compartimento">
+              <span class="sample-placeholder" data-floor-thumb>+</span>
+              <span class="floor-pill-meta">
+                <small data-floor-label>Obrigatório</small>
+                <strong data-floor-name>Escolher forro</strong>
+              </span>
+            </button>
+            <button type="button" class="floor-pill no-molding" data-molding-pill aria-label="Escolher Rodaforro deste compartimento">
+              <span class="sample-placeholder" data-molding-thumb>–</span>
+              <span class="floor-pill-meta">
+                <small data-molding-label>Opcional</small>
+                <strong data-molding-name>Sem Rodaforro</strong>
+              </span>
+            </button>
+            <button type="button" class="remove-room">Remover</button>
+          </div>
+        </div>
+        <div class="fields">
+          <label>Comprimento (m)
+            <input type="number" class="length" min="0.01" max="50" step="0.01" inputmode="decimal" placeholder="Ex.: 4,00" value="${values.length || ''}">
+          </label>
+          <label>Largura (m)
+            <input type="number" class="width" min="0.01" max="50" step="0.01" inputmode="decimal" placeholder="Ex.: 3,00" value="${values.width || ''}">
+          </label>
+          <label>Sentido da lâmina
+            <select class="direction">
+              <option value="length" ${values.direction === 'length' ? 'selected' : ''}>No comprimento</option>
+              <option value="width" ${values.direction === 'width' ? 'selected' : ''}>Na largura</option>
+            </select>
+          </label>
+        </div>
+        <div class="room-result">
+          <div class="mini-stat"><span>Área real</span><strong class="real-area">0,00 m²</strong></div>
+          <div class="mini-stat"><span>Lâminas</span><strong class="blades">0</strong></div>
+          <div class="mini-stat"><span>Tamanho da Lâmina</span><strong class="stock">—</strong></div>
+          <div class="mini-stat"><span>Área vendida</span><strong class="sold-area">0,00 m²</strong></div>
+          <div class="mini-stat"><span>Rodaforro</span><strong class="molding">—</strong></div>
+        </div>`;
+
+      room.querySelectorAll('input, select').forEach(field => field.addEventListener('input', calculate));
+      room.querySelector('[data-floor-pill]').addEventListener('click', () => openFloorDialog(room));
+      room.querySelector('[data-molding-pill]').addEventListener('click', () => openMoldingDialog(room));
+      updateFloorPill(room);
+      updateMoldingPill(room);
+      room.querySelector('.remove-room').addEventListener('click', () => {
+        room.remove();
+        renumberRooms();
+        calculate();
+      });
+
+      const addButton = document.getElementById('addRoom');
+      if (addButton) addButton.before(room);
+      else document.getElementById('rooms').appendChild(room);
+      calculate();
+    }
+
+    function renumberRooms() {
+      document.querySelectorAll('.room').forEach((room, index) => {
+        room.querySelector('.room-index').textContent = index + 1;
+        room.querySelector('.room-name span:last-child').textContent = `Compartimento ${index + 1}`;
+      });
+    }
+
+    function commercialLength(required) {
+      return STOCK_LENGTHS.find(size => size >= required) || null;
+    }
+
+    function roomData(room) {
+      const length = Number(room.querySelector('.length').value);
+      const width = Number(room.querySelector('.width').value);
+      const direction = room.querySelector('.direction').value;
+      const product = getRoomProduct(room);
+      const molding = getRoomMolding(room);
+
+      const hasLength = length > 0;
+      const hasWidth = width > 0;
+      const hasFloor = !!product;
+
+      if (!hasLength || !hasWidth || !hasFloor) {
+        const reason = !hasFloor ? 'Selecione o forro' : 'Preencha as medidas';
+        return { valid: false, reason, length, width, direction, product: null, molding, realArea: 0, blades: 0, stockLength: null, soldArea: 0, waste: 0, perimeter: 0, moldingBars: 0, moldingValue: 0 };
+      }
+
+      const bladeLength = direction === 'length' ? length : width;
+      const transverse = direction === 'length' ? width : length;
+      const blades = Math.ceil(transverse / BLADE_WIDTH);
+      const stockLength = commercialLength(bladeLength);
+      const realArea = length * width;
+      const soldArea = stockLength ? blades * stockLength * BLADE_WIDTH : 0;
+      const waste = stockLength ? Math.max(0, soldArea - realArea) : 0;
+
+      // Rodaforro: perímetro do compartimento, em barras de MOLDING_LENGTH metros.
+      const perimeter = 2 * (length + width);
+      const moldingBars = molding ? Math.ceil(perimeter / MOLDING_LENGTH) : 0;
+      const moldingValue = molding ? moldingBars * molding[payment] : 0;
+
+      return { valid: true, length, width, direction, product, molding, bladeLength, transverse, realArea, blades, stockLength, soldArea, waste, perimeter, moldingBars, moldingValue };
+    }
+
+    function calculate() {
+      const rooms = [...document.querySelectorAll('.room')];
+      const groupTotals = new Map();
+      const moldingTotals = new Map();
+      let realArea = 0;
+      let soldArea = 0;
+      let blades = 0;
+      let waste = 0;
+      let moldingBars = 0;
+      let moldingValue = 0;
+      let ceilingTotal = 0;
+      let validRooms = 0;
+      let pendingRooms = 0;
+      let hasOversize = false;
+
+      rooms.forEach(room => {
+        const data = roomData(room);
+        const price = data.product ? data.product[payment] : 0;
+        const realEl = room.querySelector('.real-area');
+        const bladesEl = room.querySelector('.blades');
+        const stockEl = room.querySelector('.stock');
+        const soldEl = room.querySelector('.sold-area');
+        const moldEl = room.querySelector('.molding');
+
+        if (!data.valid) {
+          realEl.textContent = '—';
+          bladesEl.textContent = '—';
+          stockEl.textContent = '—';
+          stockEl.classList.remove('warning');
+          soldEl.textContent = data.reason || 'Pendente';
+          if (moldEl) moldEl.textContent = data.molding ? '—' : '—';
+          pendingRooms++;
+          room.classList.add('incomplete');
+          return;
+        }
+        room.classList.remove('incomplete');
+        realEl.textContent = `${decimal.format(data.realArea)} m²`;
+        bladesEl.textContent = `${data.blades} un.`;
+        stockEl.textContent = data.stockLength ? `${decimal.format(data.stockLength)} m` : 'Acima de 6 m';
+        stockEl.classList.toggle('warning', !data.stockLength);
+        soldEl.textContent = data.stockLength
+          ? `${decimal.format(data.soldArea)} m²`
+          : `Consultar`;
+        if (moldEl) {
+          moldEl.textContent = data.molding
+            ? `${data.moldingBars} barra${data.moldingBars !== 1 ? 's' : ''}`
+            : 'Sem Rodaforro';
+        }
+
+        validRooms++;
+        realArea += data.realArea;
+        blades += data.blades;
+        if (data.stockLength) {
+          soldArea += data.soldArea;
+          waste += data.waste;
+        } else {
+          hasOversize = true;
+        }
+        const group = groupTotals.get(data.product.id) || { product: data.product, soldArea: 0, value: 0 };
+        if (data.stockLength) {
+          group.soldArea += data.soldArea;
+          group.value += data.soldArea * price;
+          ceilingTotal += data.soldArea * price;
+        }
+        groupTotals.set(data.product.id, group);
+
+        if (data.molding && data.moldingBars > 0) {
+          const moldGroup = moldingTotals.get(data.molding.id) || { molding: data.molding, bars: 0, value: 0 };
+          moldGroup.bars += data.moldingBars;
+          moldGroup.value += data.moldingValue;
+          moldingTotals.set(data.molding.id, moldGroup);
+          moldingBars += data.moldingBars;
+          moldingValue += data.moldingValue;
+        }
+      });
+
+      const total = ceilingTotal + moldingValue;
+
+      document.getElementById('sumRooms').textContent = validRooms;
+      document.getElementById('sumRealArea').textContent = validRooms ? `${decimal.format(realArea)} m²` : '0,00 m²';
+      document.getElementById('sumSoldArea').textContent = validRooms
+        ? (hasOversize ? `${decimal.format(soldArea)} m² + consultar` : `${decimal.format(soldArea)} m²`)
+        : '—';
+      document.getElementById('sumBlades').textContent = validRooms ? blades : '—';
+      document.getElementById('sumWaste').textContent = validRooms ? `${decimal.format(waste)} m²` : '—';
+      document.getElementById('sumMoldingBars').textContent = validRooms ? moldingBars : '—';
+      document.getElementById('sumTotal').textContent = validRooms
+        ? (hasOversize ? `${money.format(total)} + consultar` : money.format(total))
+        : '—';
+      document.getElementById('sumPayment').textContent = payment === 'cash' ? 'Preço à vista' : 'Preço no cartão';
+
+      const productCount = groupTotals.size;
+      const summaryName = validRooms === 0
+        ? 'Nenhum compartimento pronto'
+        : (productCount > 1 ? `${productCount} modelos` : [...groupTotals.values()][0].product.name);
+      document.getElementById('selectedProduct').innerHTML = `
+        <span class="sample ${validRooms === 0 ? 'white-matte' : [...groupTotals.values()][0].product.sample}"></span>
+        <span><strong>${summaryName}</strong><br><small>${validRooms === 0 ? `Preencha todos os campos de pelo menos 1 compartimento (${pendingRooms} pendente${pendingRooms !== 1 ? 's' : ''})` : (productCount > 1 ? 'Veja o detalhamento por modelo abaixo' : money.format([...groupTotals.values()][0].product[payment]) + '/m² • ' + (payment === 'cash' ? 'à vista' : 'cartão'))}</small></span>`;
+
+      let breakdown = document.getElementById('breakdownLines');
+      if (!breakdown) {
+        breakdown = document.createElement('div');
+        breakdown.id = 'breakdownLines';
+        breakdown.className = 'summary-lines';
+        const lines = document.querySelector('.summary-lines');
+        lines.after(breakdown);
+      }
+      if (validRooms === 0) {
+        breakdown.innerHTML = '';
+      } else {
+        const ceilingLines = [...groupTotals.values()].map(g => `
+          <div class="summary-line">
+            <span style="display:flex; align-items:center; gap:8px;">
+              <span class="sample ${g.product.sample}" style="width:24px; height:24px; border-radius:6px;"></span>
+              ${g.product.name}
+            </span>
+            <strong>${money.format(g.value)}</strong>
+          </div>
+        `).join('');
+        const moldingLines = [...moldingTotals.values()].map(g => `
+          <div class="summary-line">
+            <span style="display:flex; align-items:center; gap:8px;">
+              <span class="sample ${g.molding.sample}" style="width:24px; height:24px; border-radius:6px;"></span>
+              ${g.molding.name} <small style="color:rgba(255,255,255,.55);">(${g.bars} barra${g.bars !== 1 ? 's' : ''})</small>
+            </span>
+            <strong>${money.format(g.value)}</strong>
+          </div>
+        `).join('');
+        breakdown.innerHTML = ceilingLines + (moldingLines ? `
+          <div class="summary-line" style="margin-top:8px; padding-top:10px; border-top:1px solid rgba(255,255,255,.12); color:rgba(255,255,255,.55); font-size:.78rem; letter-spacing:.04em; text-transform:uppercase;">
+            <span>Rodaforro</span><span></span>
+          </div>` + moldingLines : '');
+      }
+
+      const copyBtn = document.getElementById('copyQuote');
+      copyBtn.disabled = validRooms === 0;
+      copyBtn.style.opacity = validRooms === 0 ? .5 : 1;
+      copyBtn.style.cursor = validRooms === 0 ? 'not-allowed' : 'pointer';
+    }
+
+    function buildQuoteText() {
+      const rooms = [...document.querySelectorAll('.room')];
+      const lines = [];
+      const groupTotals = new Map();
+      const moldingTotals = new Map();
+      let soldArea = 0;
+      let realArea = 0;
+      let totalBlades = 0;
+      let totalMoldingBars = 0;
+      let totalMoldingValue = 0;
+      let hasOversize = false;
+      let displayed = 0;
+
+      lines.push('*ORÇAMENTO ESTIMADO – FORRO PVC*');
+      lines.push(`Forma de pagamento: ${payment === 'cash' ? 'à vista' : 'cartão'}`);
+      lines.push('');
+
+      rooms.forEach(room => {
+        const data = roomData(room);
+        if (!data.valid) return;
+        displayed++;
+        const price = data.product[payment];
+        realArea += data.realArea;
+        totalBlades += data.blades;
+        if (data.stockLength) soldArea += data.soldArea;
+        else hasOversize = true;
+
+        const group = groupTotals.get(data.product.id) || { product: data.product, soldArea: 0, value: 0 };
+        if (data.stockLength) {
+          group.soldArea += data.soldArea;
+          group.value += data.soldArea * price;
+        }
+        groupTotals.set(data.product.id, group);
+
+        if (data.molding && data.moldingBars > 0) {
+          const moldGroup = moldingTotals.get(data.molding.id) || { molding: data.molding, bars: 0, value: 0 };
+          moldGroup.bars += data.moldingBars;
+          moldGroup.value += data.moldingValue;
+          moldingTotals.set(data.molding.id, moldGroup);
+          totalMoldingBars += data.moldingBars;
+          totalMoldingValue += data.moldingValue;
+        }
+
+        lines.push(`*Compartimento ${displayed}*`);
+        lines.push(`Modelo: ${data.product.name} (${money.format(price)}/m²)`);
+        lines.push(`Medida: ${decimal.format(data.length)} × ${decimal.format(data.width)} m`);
+        lines.push(`Perímetro: ${decimal.format(data.perimeter)} m`);
+        lines.push(`Sentido da lâmina: ${data.direction === 'length' ? 'comprimento' : 'largura'} (${decimal.format(data.bladeLength)} m)`);
+        lines.push(`Quantidade: ${data.blades} lâminas`);
+        lines.push(`Comprimento comercial: ${data.stockLength ? decimal.format(data.stockLength) + ' m' : 'consultar – medida acima de 6 m'}`);
+        lines.push(`Área vendida: ${decimal.format(data.soldArea)} m²`);
+        lines.push(`Subtotal forro: ${data.stockLength ? money.format(data.soldArea * price) : 'consultar'}`);
+        if (data.molding) {
+          lines.push(`Rodaforro: ${data.molding.name} — ${data.moldingBars} barra${data.moldingBars !== 1 ? 's' : ''} de ${MOLDING_LENGTH} m (${money.format(data.molding[payment])}/barra)`);
+          lines.push(`Subtotal Rodaforro: ${money.format(data.moldingValue)}`);
+        }
+        lines.push('');
+      });
+
+      if (!displayed) return 'Preencha pelo menos um compartimento para gerar o resumo.';
+
+      const ceilingTotal = [...groupTotals.values()].reduce((s, g) => s + g.value, 0);
+      const total = ceilingTotal + totalMoldingValue;
+      lines.push('*Por modelo de forro*');
+      [...groupTotals.values()].forEach(g => {
+        lines.push(`• ${g.product.name}: ${decimal.format(g.soldArea)} m² = ${money.format(g.value)}`);
+      });
+      if (moldingTotals.size) {
+        lines.push('');
+        lines.push('*Rodaforro*');
+        [...moldingTotals.values()].forEach(g => {
+          lines.push(`• ${g.molding.name}: ${g.bars} barra${g.bars !== 1 ? 's' : ''} de ${MOLDING_LENGTH} m = ${money.format(g.value)}`);
+        });
+      }
+      lines.push('');
+      lines.push(`Área real total: ${decimal.format(realArea)} m²`);
+      lines.push(`Área vendida total: ${decimal.format(soldArea)} m²${hasOversize ? ' + item sob consulta' : ''}`);
+      lines.push(`Total de lâminas: ${totalBlades}`);
+      if (totalMoldingBars) lines.push(`Total de barras de Rodaforro: ${totalMoldingBars} (${decimal.format(totalMoldingBars * MOLDING_LENGTH)} m lineares vendidas)`);
+      lines.push(`*Valor estimado: ${money.format(total)}${hasOversize ? ' + item sob consulta' : ''}*`);
+      lines.push('');
+      lines.push('_Estimativa somente do forro. Perfis, estrutura, frete e instalação sob consulta._');
+      return lines.join('\n');
+    }
+
+    async function copyQuote() {
+      const text = buildQuoteText();
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(text.startsWith('Preencha') ? text : 'Resumo copiado para enviar no WhatsApp.');
+      } catch {
+        const area = document.createElement('textarea');
+        area.value = text;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('Resumo copiado para enviar no WhatsApp.');
+      }
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2300);
+    }
+
+    // ---------- Molding picker dialog ----------
+    const moldingDialog = document.getElementById('moldingDialog');
+    const moldingDialogGrid = document.getElementById('moldingDialogGrid');
+    const moldingDialogSubtitle = document.getElementById('moldingDialogSubtitle');
+    let moldingDialogRoom = null;
+    let moldingDialogPickedId = null;
+
+    function buildMoldingDialogGrid(currentId) {
+      moldingDialogGrid.innerHTML = moldings.map(m => {
+        const price = m[payment];
+        const selected = m.id === currentId;
+        return `
+          <button type="button" class="product ${selected ? 'selected' : ''}" data-dialog-molding="${m.id}" aria-pressed="${selected}">
+            <span class="product-check">✓</span>
+            <span class="sample ${m.sample}" role="img" aria-label="Amostra do ${m.name}"></span>
+            <span>
+              <span class="product-name">${m.name}</span>
+              <span class="product-price">${money.format(price)} <small>/barra de 6 m</small></span>
+            </span>
+          </button>`;
+      }).join('');
+      moldingDialogGrid.querySelectorAll('[data-dialog-molding]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          moldingDialogPickedId = btn.dataset.dialogMolding;
+          moldingDialogGrid.querySelectorAll('[data-dialog-molding]').forEach(b => {
+            const isSel = b.dataset.dialogMolding === moldingDialogPickedId;
+            b.classList.toggle('selected', isSel);
+            b.setAttribute('aria-pressed', isSel ? 'true' : 'false');
+          });
+        });
+      });
+    }
+
+    function openMoldingDialog(room) {
+      moldingDialogRoom = room;
+      moldingDialogPickedId = room.dataset.moldingId || null;
+      const roomLabel = room.querySelector('.room-name span:last-child').textContent;
+      const len = Number(room.querySelector('.length').value);
+      const wid = Number(room.querySelector('.width').value);
+      let perimeterHint = '';
+      if (len > 0 && wid > 0) {
+        const perim = 2 * (len + wid);
+        const bars = Math.ceil(perim / MOLDING_LENGTH);
+        perimeterHint = `Perímetro: ${decimal.format(perim)} m → ${bars} barra${bars !== 1 ? 's' : ''} de ${MOLDING_LENGTH} m.`;
+      } else {
+        perimeterHint = 'Preencha comprimento e largura para ver a quantidade de barras.';
+      }
+      moldingDialogSubtitle.textContent = `${roomLabel} — ${perimeterHint}`;
+      buildMoldingDialogGrid(moldingDialogPickedId);
+      moldingDialog.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        const first = moldingDialogGrid.querySelector('[data-dialog-molding]');
+        if (first) first.focus();
+      }, 50);
+    }
+
+    function closeMoldingDialog() {
+      moldingDialog.classList.remove('open');
+      document.body.style.overflow = '';
+      moldingDialogRoom = null;
+      moldingDialogPickedId = null;
+    }
+
+    document.getElementById('moldingDialogClose').addEventListener('click', closeMoldingDialog);
+    document.getElementById('moldingDialogClear').addEventListener('click', () => {
+      if (!moldingDialogRoom) return;
+      delete moldingDialogRoom.dataset.moldingId;
+      updateMoldingPill(moldingDialogRoom);
+      closeMoldingDialog();
+      calculate();
+      showToast('Rodaforro removido deste compartimento.');
+    });
+    document.getElementById('moldingDialogApply').addEventListener('click', () => {
+      if (!moldingDialogRoom || !moldingDialogPickedId) { closeMoldingDialog(); return; }
+      const picked = getMoldingById(moldingDialogPickedId);
+      if (!picked) { closeMoldingDialog(); return; }
+      moldingDialogRoom.dataset.moldingId = picked.id;
+      updateMoldingPill(moldingDialogRoom);
+      closeMoldingDialog();
+      calculate();
+      showToast(`Rodaforro "${picked.name}" aplicado.`);
+    });
+    moldingDialog.addEventListener('click', (e) => {
+      if (e.target === moldingDialog) closeMoldingDialog();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && moldingDialog.classList.contains('open')) closeMoldingDialog();
+    });
+
+    // ---------- Floor picker dialog ----------
+    const floorDialog = document.getElementById('floorDialog');
+    const floorDialogGrid = document.getElementById('floorDialogGrid');
+    const floorDialogSubtitle = document.getElementById('floorDialogSubtitle');
+    let dialogRoom = null;
+    let dialogPickedId = null;
+
+    function buildDialogGrid(currentId) {
+      floorDialogGrid.innerHTML = products.map(product => {
+        const price = product[payment];
+        const selected = product.id === currentId;
+        return `
+          <button type="button" class="product ${selected ? 'selected' : ''}" data-dialog-product="${product.id}" aria-pressed="${selected}">
+            <span class="product-check">✓</span>
+            <span class="sample ${product.sample}" role="img" aria-label="Amostra do ${product.name}"></span>
+            <span>
+              <span class="product-name">${product.name}</span>
+              <span class="product-price">${money.format(price)} <small>/m²</small></span>
+            </span>
+          </button>`;
+      }).join('');
+      floorDialogGrid.querySelectorAll('[data-dialog-product]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          dialogPickedId = btn.dataset.dialogProduct;
+          floorDialogGrid.querySelectorAll('[data-dialog-product]').forEach(b => {
+            const isSel = b.dataset.dialogProduct === dialogPickedId;
+            b.classList.toggle('selected', isSel);
+            b.setAttribute('aria-pressed', isSel ? 'true' : 'false');
+          });
+        });
+      });
+    }
+
+    function openFloorDialog(room) {
+      dialogRoom = room;
+      dialogPickedId = room.dataset.productId || (products[0] && products[0].id);
+      const roomLabel = room.querySelector('.room-name span:last-child').textContent;
+      floorDialogSubtitle.textContent = `${roomLabel} — escolha um acabamento para este compartimento.`;
+      buildDialogGrid(dialogPickedId);
+      floorDialog.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        const first = floorDialogGrid.querySelector('[data-dialog-product]');
+        if (first) first.focus();
+      }, 50);
+    }
+
+    function closeFloorDialog() {
+      floorDialog.classList.remove('open');
+      document.body.style.overflow = '';
+      dialogRoom = null;
+      dialogPickedId = null;
+    }
+
+    document.getElementById('floorDialogClose').addEventListener('click', closeFloorDialog);
+    document.getElementById('floorDialogClear').addEventListener('click', () => {
+      if (!dialogRoom) return;
+      delete dialogRoom.dataset.productId;
+      updateFloorPill(dialogRoom);
+      closeFloorDialog();
+      calculate();
+      showToast('Seleção de forro removida.');
+    });
+    document.getElementById('floorDialogApply').addEventListener('click', () => {
+      if (!dialogRoom || !dialogPickedId) { closeFloorDialog(); return; }
+      const picked = getProductById(dialogPickedId);
+      if (!picked) { closeFloorDialog(); return; }
+      dialogRoom.dataset.productId = picked.id;
+      updateFloorPill(dialogRoom);
+      closeFloorDialog();
+      calculate();
+      showToast(`Forro "${picked.name}" aplicado ao compartimento.`);
+    });
+    floorDialog.addEventListener('click', (e) => {
+      if (e.target === floorDialog) closeFloorDialog();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && floorDialog.classList.contains('open')) closeFloorDialog();
+    });
+
+    document.querySelectorAll('[data-payment]').forEach(button => {
+      button.addEventListener('click', () => {
+        payment = button.dataset.payment;
+        document.querySelectorAll('[data-payment]').forEach(b => b.classList.toggle('active', b === button));
+        document.querySelectorAll('.room').forEach(room => { updateFloorPill(room); updateMoldingPill(room); });
+        calculate();
+      });
+    });
+
+    const addRoomButton = document.createElement('button');
+    addRoomButton.type = 'button';
+    addRoomButton.id = 'addRoom';
+    addRoomButton.className = 'add-room';
+    addRoomButton.textContent = '+ Adicionar outro compartimento';
+    addRoomButton.addEventListener('click', () => addRoom());
+    document.getElementById('rooms').appendChild(addRoomButton);
+
+    document.getElementById('copyQuote').addEventListener('click', copyQuote);
+
+    addRoom({ length: 4, width: 3, direction: 'length' });
+    addRoom();
+  </script>
+</body>
+</html>
